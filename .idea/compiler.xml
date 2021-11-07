@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="PRO2_2021_ChatClient_skA" target="16" />
+      <module name="PRO2_2021_ChatClient_skA" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

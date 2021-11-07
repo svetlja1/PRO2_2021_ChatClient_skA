@@ -1,6 +1,8 @@
 package czk.uhk.pro2.models;
 
+
 import java.time.LocalDateTime;
+
 public class Message {
     private String author;
     private String text;

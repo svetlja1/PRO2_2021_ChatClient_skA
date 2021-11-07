@@ -55,7 +55,6 @@ public class MainFrame extends JFrame {
     }
     private void initLoginpanel(JPanel panel){
         panel.add(txtInputName);
-
         btnLogin = new JButton("Login");
         btnLogin.addActionListener(new ActionListener() {
             @Override
@@ -63,10 +62,11 @@ public class MainFrame extends JFrame {
                 if(chatClient.isAuthenticated()){
                    chatClient.logout();
                    btnLogin.setText("Login");
-                   txtInputName.setEditable(true);
-                   txtAreaChat.setEnabled(true);
+                   txtInputName.setEnabled(true);
+                   txtAreaChat.setEnabled(false);
+                   txtInputMessage.setEnabled(false);
                 }
-                else {
+                else { //user clicked on login
                     String userName = txtInputName.getText();
                     if(userName.length()<1) {
                         JOptionPane.showMessageDialog(null,"Enter your name", "Name is missing",JOptionPane.ERROR_MESSAGE);
@@ -74,9 +74,9 @@ public class MainFrame extends JFrame {
                     }
                     chatClient.login(userName);
                     btnLogin.setText("Logout");
-                    txtInputName.setEditable(false);
-                    txtAreaChat.setEnabled(false);
-                    txtAreaChat.setEditable(false);
+                    txtInputName.setEnabled(false);
+                    txtAreaChat.setEnabled(true);
+                    txtInputMessage.setEnabled(true);
                 }
                 refreshMessages();
             }
@@ -100,7 +100,8 @@ public class MainFrame extends JFrame {
     private void initFooterPanel(JPanel panel){
         txtInputMessage = new JTextField("", 50);
         panel.add(txtInputMessage);
-
+        txtInputMessage.setEnabled(false);
+       // txtInputMessage.setEditable(false);
         btnSend = new JButton("Odeslat");
         btnSend.addActionListener(new ActionListener() {
             @Override
